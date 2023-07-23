@@ -4,7 +4,7 @@ import { UserButton } from "@clerk/nextjs"
 const Dashboard = () => {
   return (
     <div>
-      Dashboard (protected)
+      dashboard (protected route)
       <UserButton afterSignOutUrl='/' />
     </div>
   )
