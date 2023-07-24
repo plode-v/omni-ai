@@ -53,8 +53,8 @@ const Dashboard = () => {
   const router = useRouter();
 
   return (
-    <div className='space-y-4 md:mt-8 mt-4'>
-      <div className='md:mb-20 mb-10'>
+    <div className='space-y-2 md:mt-8 mt-4'>
+      <div className='2xl:mb-20 mb-8'>
         <h1 className='text-2xl md:text-4xl pb-2 font-[800] text-center'>Limitless power of AI</h1>
         <p className='text-muted-foreground text-center text-sm md:text-md font-[300]'>Get the full experience of AI with Omni AI</p>
       </div>
