@@ -1,8 +1,19 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
+import { useClerk } from '@clerk/nextjs'
 import Link from 'next/link'
+import { redirect } from "next/navigation";
 
 const LandingPage = () => {
+    const { session } = useClerk();
+
+    useEffect(() => {
+        if (session) {
+            redirect('/dashboard')
+        }
+    }, [session])
+
   return (
     <div>
         LandingPage (unprotected)
