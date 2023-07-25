@@ -17,7 +17,7 @@ const Heading = ({ title, desc, Icon, iconColor, bgColor }: HeadingProps) => {
                 className={`md:w-10 md:h-10 h-8 w-8 ${iconColor}`}
             />
         </div>
-        <div className=''>
+        <div>
             <h1 className='font-[700] md:text-3xl text-xl'>{title}</h1>
             <p className='text-muted-foreground md:text-sm text-xs'>{desc}</p>
         </div>

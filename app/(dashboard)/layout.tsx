@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         </div>
         <div className='w-full flex justify-center'>
           {/* FIXME: Fix page centering error on 3xl screens */}
-          <main className='md:pl-[17.5rem] w-full xl:w-3/5 flex-col flex'>
+          <main className='md:pl-[17.5rem] w-full 3xl:w-3/5 flex-col flex'>
             <Navbar />
             {children}
           </main>
