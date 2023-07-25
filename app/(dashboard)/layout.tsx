@@ -9,10 +9,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <div className='bg-[#1d1d3b] hidden md:flex md:flex-col md:inset-y-0 md:fixed md:w-[17.5rem]'>
         <Sidebar />
         </div>
-        <main className='md:pl-[17.5rem] w-full'>
-          <Navbar />
-          {children}
-        </main>
+        <div className='w-full flex justify-center'>
+          {/* FIXME: Fix page centering error on 3xl screens */}
+          <main className='md:pl-[17.5rem] w-full xl:w-3/5 flex-col flex'>
+            <Navbar />
+            {children}
+          </main>
+        </div>
     </div>
   )
 }
