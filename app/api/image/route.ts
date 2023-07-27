@@ -41,6 +41,8 @@ export const POST = async (req: Request) => {
             size: resolution,
         });
 
+        console.log("done")
+
         return NextResponse.json(response.data.data);
 
     } catch (err) {

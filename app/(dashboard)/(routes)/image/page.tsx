@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from 'react'
+import Image from 'next/image'
 import Heading from '@/components/Heading'
-import { FileImageIcon } from 'lucide-react'
+import { Download, FileImageIcon } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod';
 import { formSchema, amountOptions, resolutionOptions } from './constants'
@@ -13,14 +14,12 @@ import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import Empty from '@/components/Empty'
 import Loader from '@/components/Loader'
-import BotAvatar from '@/components/BotAvatar'
-import UserAvatar from '@/components/UserAvatar'
-import ReactMarkdown from "react-markdown";
-import { Select, SelectTrigger, SelectContent, SelectGroup, SelectItem, SelectValue, SelectLabel } from '@/components/ui/select'
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select'
+import { Card, CardFooter } from '@/components/ui/card'
 
 const ImagePage = () => {
   const router  = useRouter();
-  const [images, setImages] = useState<string[]>([])
+  const [photos, setPhotos] = useState<string[]>([])
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -35,14 +34,13 @@ const ImagePage = () => {
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      setImages([]);
+      setPhotos([]);
 
       const response = await axios.post("/api/image", values);
 
-      const urls = response.data.map((image: {url : string}) => {
-        image.url;
-      })
+      const urls = await response.data.map((image: { url: string }) => image.url);
 
+      setPhotos(urls)
       form.reset();
     } catch (err: any) {
       // TODO: Open Pro Model
@@ -155,13 +153,36 @@ const ImagePage = () => {
         {isLoading && (
           <Loader />
         )}
-        {images.length === 0 && !isLoading && (
+        {photos.length === 0 && !isLoading && (
           <Empty 
             label='Start generating images now'
             />
         )}
-        <div>
-          Images will be rendered here
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8'>
+          {photos.map((src) => (
+            <Card
+              key={src}
+              className='rounded-lg overflow-hidden'
+            >
+              <div className='aspect-square relative'>
+                <Image 
+                  src={src}
+                  alt='image'
+                  fill
+                />
+              </div>
+              <CardFooter className='p-2'>
+              <Button 
+                variant="secondary" 
+                className='w-full'
+                onClick={() => window.open(src)}  
+              >
+                  <Download className='h-4 w-4 mr-2' />
+                  Download
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
         </div>
       </div>
     </div>
