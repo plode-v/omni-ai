@@ -19,29 +19,27 @@ import { Card, CardFooter } from '@/components/ui/card'
 
 const ImagePage = () => {
   const router  = useRouter();
-  const [photos, setPhotos] = useState<string[]>([])
+  const [photos, setPhotos] = useState<string[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prompt:"",
       amount: "1",
       resolution: "256x256"
     }
-  });
+  })
 
   const isLoading = form.formState.isSubmitting;
 
-  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       setPhotos([]);
 
-      const response = await axios.post("/api/image", values);
+      const response = await axios.post("/api/image", data);
 
       const urls = await response.data.map((image: { url: string }) => image.url);
 
       setPhotos(urls)
-      form.reset();
     } catch (err: any) {
       // TODO: Open Pro Model
       console.log(err);
@@ -61,20 +59,21 @@ const ImagePage = () => {
       />
       <div className='md:px-4 lg:px-8 px-6'>
         <div>
-          <Form
-            {...form}
-          >
-            <form onSubmit={form.handleSubmit(handleSubmit)}
+          <Form {...form}>
+            <form 
+              onSubmit={form.handleSubmit(handleSubmit)}
               className='rounded-lg border w-full p-2 md:p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2'
             >
               <FormField 
-                name="prompt"
+                name='prompt'
                 render={({ field }) => (
-                  <FormItem className='col-span-12 md:col-span-6'>
+                  <FormItem
+                    className='col-span-12 lg:col-span-6'
+                  >
                     <FormControl>
-                      <Input 
-                        placeholder='A white cat playing with brown dogs'  
-                        className='border-0 outline-none focus-visible:ring-0 text-black/80 focus-visible:ring-transparent' 
+                      <Input
+                        className='p-4 border-0 outline-none focus-visible:ring-0 text-black/80'
+                        placeholder='A horse in the backyard'
                         disabled={isLoading}
                         {...field}
                       />
@@ -99,13 +98,11 @@ const ImagePage = () => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {amountOptions.map(option => (
+                        {amountOptions.map((amount) => (
                           <SelectItem
-                            key={option.value}
-                            value={option.value}
-                          >
-                            {option.label}
-                          </SelectItem>
+                            key={amount.value}
+                            value={amount.value}
+                          >{amount.label}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -120,8 +117,8 @@ const ImagePage = () => {
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
-                      value={field.value}
                       defaultValue={field.value}
+                      value={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
@@ -129,11 +126,8 @@ const ImagePage = () => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {resolutionOptions.map(option => (
-                          <SelectItem
-                            key={option.value}
-                            value={option.value}
-                          >
+                        {resolutionOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
                             {option.label}
                           </SelectItem>
                         ))}
@@ -142,7 +136,7 @@ const ImagePage = () => {
                   </FormItem>
                 )}
               />
-              <Button className='from-violet-600 to-pink-600 bg-gradient-to-r text-white col-span-12 md:col-span-2'>
+              <Button className='col-span-12 md:col-span-2 from-violet-600 to-pink-600 bg-gradient-to-r text-white' disabled={isLoading}>
                 Generate
               </Button>
             </form>
