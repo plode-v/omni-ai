@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import { LayoutDashboard, MessageSquare, FileImageIcon, VideoIcon, Music4Icon, Code2Icon, WrenchIcon } from 'lucide-react'
+import { LayoutDashboard, MessageSquare, FileImageIcon, VideoIcon, Music4Icon, Code2Icon, WrenchIcon, GalleryVerticalEndIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
 const Sidebar = () => {
@@ -29,6 +29,12 @@ const Sidebar = () => {
             icon: VideoIcon,
             href: "/video",
             color: "text-pink-500"
+        },
+        {
+            label: "Stable Diffusion",
+            icon: GalleryVerticalEndIcon,
+            href: "stable-diffusion",
+            color: "text-cyan-500"
         },
         {
             label: "Music Generation",

@@ -1,7 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Heading from '@/components/Heading'
-import { MessageSquare } from 'lucide-react'
+import { GalleryVerticalEndIcon } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod';
 import { formSchema } from './constants'
@@ -10,17 +10,19 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
-import { ChatCompletionRequestMessage } from 'openai'
 import axios from 'axios'
 import Empty from '@/components/Empty'
 import Loader from '@/components/Loader'
-import BotAvatar from '@/components/BotAvatar'
-import UserAvatar from '@/components/UserAvatar'
+import { Slider } from '@/components/ui/slider'
 
-const Conversation = () => {
+
+
+const VideoPage = () => {
+
+  // TODO: Add more configurations on stable diffusion
 
   const router = useRouter();
-  const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([])
+  const [video, setVideo] = useState();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -33,14 +35,13 @@ const Conversation = () => {
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const userMessages: ChatCompletionRequestMessage = {role: "user", content: values.prompt}
-      const newMessages = [...messages, userMessages];
 
-      const response = await axios.post('/api/conversation', {
-        messages: newMessages
-      });
+        setVideo(undefined)
 
-      setMessages((current) => [...current, userMessages, response.data]);
+      const response = await axios.post("/api/stable-diffusion", values);
+
+      setVideo(response.data);
+      console.log(response.status);
 
       form.reset();
     } catch (err: any) {
@@ -53,11 +54,11 @@ const Conversation = () => {
   return (
     <div className='pb-20'>
       <Heading 
-        title="Conversation"
-        desc="Ask Omni anything"
-        Icon={MessageSquare}
-        iconColor='text-yellow-500'
-        bgColor='bg-yellow-500/10'
+        title="Stable Diffusion"
+        desc="Create stable diffusion with Omni-AI"
+        Icon={GalleryVerticalEndIcon}
+        iconColor='text-cyan-500'
+        bgColor='bg-cyan-500/10'
       />
       <div className='px-4 md:px-6 lg:px-8'>
         <div>
@@ -69,18 +70,18 @@ const Conversation = () => {
               <FormField 
                 name='prompt'
                 render={({ field }) => (
-                  <FormItem className='col-span-12 lg:col-span-10'>
+                  <FormItem className='col-span-12 md:col-span-7'>
                     <FormControl>
                       <Input 
                         className='text-black/80 border-0 outline-none focus-visible:ring-0'
-                        placeholder='What is the radius of the Earth'
+                        placeholder='A cat in the middle of the woods'
                         {...field}
                       />
                     </FormControl>
                   </FormItem>
                 )}
               />
-              <Button className='col-span-12 lg:col-span-2 from-violet-600 to-pink-600 bg-gradient-to-r text-white'>
+              <Button className='col-span-12 md:col-span-2 from-violet-600 to-pink-600 bg-gradient-to-r text-white'>
                 Generate
               </Button>
             </form>
@@ -88,25 +89,22 @@ const Conversation = () => {
         </div>
         <div>
           {isLoading && (
-            <Loader label='Generating' />
+            <Loader label='Generating... This may take a while' />
           )}
         </div>
-        {messages.length === 0 && !isLoading && (
-          <Empty label='Start the conversation now'/>
+        {!video && !isLoading && (
+          <Empty label='Generate Awesome Stable Diffusion now'/>
         )}
-        <div className='flex flex-col-reverse gap-y-4 mt-5'>
-          {messages.map((msg) => (
-            <div key={msg.content} className={`p-8 w-full flex gap-x-8 rounded-lg border-slate-500/10 border ${msg.role === 'assistant' && 'bg-slate-500/5 border-0'}`}>
-              {msg.role === "user" ? <UserAvatar /> : <BotAvatar />}
-              <p className='text-sm md:text-md'>
-                {msg.content}
-              </p>
-            </div>
-          ))}
-        </div>
+        {video && (
+          <div className='flex w-full h-full justify-center items-center mt-8'>
+            <video controls className='mt-8'>
+              <source src={video} />
+            </video>
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
-export default Conversation
+export default VideoPage

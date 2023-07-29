@@ -75,7 +75,7 @@ const CodePage = () => {
               <FormField 
                 name='prompt'
                 render={({ field }) => (
-                  <FormItem className='col-span-12 md:col-span-10'>
+                  <FormItem className='col-span-12 lg:col-span-10'>
                     <FormControl>
                       <Input 
                         className='border-0 outline-none focus:outline-none text-black/80'
@@ -87,7 +87,7 @@ const CodePage = () => {
                   </FormItem>
                 )}
               />
-              <Button className='from-violet-600 to-pink-600 bg-gradient-to-r col-span-12 md:col-span-2'>
+              <Button className='from-violet-600 to-pink-600 bg-gradient-to-r col-span-12 lg:col-span-2'>
                 Generate
               </Button>
             </form>

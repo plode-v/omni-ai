@@ -85,7 +85,7 @@ const ImagePage = () => {
                 name='amount'
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className='col-span-12 lg:col-span-2'>
+                  <FormItem className='col-span-12 md:col-span-6 lg:col-span-2'>
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
@@ -113,7 +113,7 @@ const ImagePage = () => {
                 name='resolution'
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem className='col-span-12 lg:col-span-2'>
+                  <FormItem className='col-span-12 md:col-span-6 lg:col-span-2'>
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
@@ -136,7 +136,7 @@ const ImagePage = () => {
                   </FormItem>
                 )}
               />
-              <Button className='col-span-12 md:col-span-2 from-violet-600 to-pink-600 bg-gradient-to-r text-white' disabled={isLoading}>
+              <Button className='col-span-12 lg:col-span-2 from-violet-600 to-pink-600 bg-gradient-to-r text-white' disabled={isLoading}>
                 Generate
               </Button>
             </form>
