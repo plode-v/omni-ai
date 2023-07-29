@@ -10,7 +10,7 @@ const EmptyComponent = ({ label }: EmptyProps ) => {
     <div className="h-full items-center justify-center w-full flex flex-col">
         <Player 
           src={'/lottie/empty.json'}
-          loop={2}
+          loop={1}
           autoplay
           speed={0.8}
           className='md:h-[32rem] h-[20rem]'
