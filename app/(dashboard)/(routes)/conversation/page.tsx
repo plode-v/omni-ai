@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Heading from '@/components/Heading'
-import { Bot, MessageSquare } from 'lucide-react'
+import { MessageSquare } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod';
 import { formSchema } from './constants'
@@ -45,6 +45,8 @@ const Conversation = () => {
       form.reset();
     } catch (err: any) {
       console.log(err);
+    } finally {
+      router.refresh();
     }
   }
 
@@ -86,7 +88,7 @@ const Conversation = () => {
         </div>
         <div>
           {isLoading && (
-            <Loader />
+            <Loader label='Generating' />
           )}
         </div>
         {messages.length === 0 && !isLoading && (
