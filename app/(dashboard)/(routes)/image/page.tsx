@@ -152,13 +152,13 @@ const ImagePage = () => {
             label='Start generating images now'
             />
         )}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8 p-4 md:p-0'>
           {photos.map((src) => (
             <Card
               key={src}
-              className='rounded-lg overflow-hidden'
+              className='rounded-lg overflow-hidden w-full'
             >
-              <div className='aspect-square relative'>
+              <div className='aspect-square relative w-full'>
                 <Image 
                   src={src}
                   alt='image'

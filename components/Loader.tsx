@@ -12,7 +12,7 @@ const Loader = ({ label }: LabelInterface) => {
     <div className='flex items-center flex-col justify-center mt-10 bg-slate-100 p-4 mx-4 md:mx-6 lg:mx-8 rounded-lg'>
         <div className='w-10 h-10 md:h-14 md:w-14 items-center justify-center flex relative '>
             <Image
-                src='/public/images/logo.png'
+                src={'/images/Logo.png'}
                 fill
                 alt="loading"
                 className='animate-spin'

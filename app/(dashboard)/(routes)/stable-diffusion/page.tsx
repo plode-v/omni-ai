@@ -70,7 +70,7 @@ const VideoPage = () => {
               <FormField 
                 name='prompt'
                 render={({ field }) => (
-                  <FormItem className='col-span-12 md:col-span-7'>
+                  <FormItem className='col-span-12 md:col-span-10'>
                     <FormControl>
                       <Input 
                         className='text-black/80 border-0 outline-none focus-visible:ring-0'

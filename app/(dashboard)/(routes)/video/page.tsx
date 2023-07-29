@@ -26,8 +26,7 @@ const VideoPage = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      prompt: "",
-      angle: 0
+      prompt: ""
     }
   });
 
@@ -55,7 +54,7 @@ const VideoPage = () => {
     <div className='pb-20'>
       <Heading 
         title="Video Generation"
-        desc="Create stable diffusion with Omni-AI"
+        desc="Generate videos from a prompt"
         Icon={VideoIcon}
         iconColor='text-pink-500'
         bgColor='bg-pink-500/10'
@@ -70,7 +69,7 @@ const VideoPage = () => {
               <FormField 
                 name='prompt'
                 render={({ field }) => (
-                  <FormItem className='col-span-12 md:col-span-7'>
+                  <FormItem className='col-span-12 md:col-span-10'>
                     <FormControl>
                       <Input 
                         className='text-black/80 border-0 outline-none focus-visible:ring-0'
@@ -78,26 +77,6 @@ const VideoPage = () => {
                         {...field}
                       />
                     </FormControl>
-                  </FormItem>
-                )}
-              />
-              <FormField 
-                name='angle'
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem className='col-span-12 md:col-span-3 flex flex-col justify-center'>
-                    <div className='flex flex-col gap-2 justify-center items-center'>
-                      <Slider 
-                        defaultValue={[0]}
-                        onValueChange={field.onChange}
-                        value={[field.value]}
-                        max={10}
-                        step={1}
-                        disabled={isLoading}
-                        className='px-4 mt-2'
-                      />
-                      <div className=''>Angle: {field.value}</div>
-                    </div>
                   </FormItem>
                 )}
               />
