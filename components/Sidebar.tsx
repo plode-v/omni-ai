@@ -57,7 +57,7 @@ const Sidebar = () => {
             <Link href="/dashboard" className='flex items-center justify-start p-1 mb-14 w-min'>
                 <div className='h-[2.5rem] w-[2.5rem] relative mr-4'>
                     <Image 
-                        src="/logo.png"
+                        src="/public/logo.png"
                         fill
                         alt='logo'
                     />
