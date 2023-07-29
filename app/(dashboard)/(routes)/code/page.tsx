@@ -78,7 +78,7 @@ const CodePage = () => {
                   <FormItem className='col-span-12 lg:col-span-10'>
                     <FormControl>
                       <Input 
-                        className='border-0 outline-none focus:outline-none text-black/80'
+                        className='border-0 outline-none focus-visible:ring-0 text-black/80'
                         placeholder='Generate submit button using React hook'
                         disabled={isLoading}
                         {...field}
@@ -99,7 +99,7 @@ const CodePage = () => {
           <Loader label='Generating...' />
         )}
         {messages.length === 0 && !isLoading && (
-          <Empty label='Start asking now'/>
+          <Empty label='Start coding now'/>
         )}
         <div className='flex-col-reverse flex mt-10 gap-y-4'>
           {messages.map((msg) => (
@@ -121,7 +121,7 @@ const CodePage = () => {
                       }}
                       className='text-sm overflow-hidden leading-7'
                     >
-                      {msg.content || ""}
+                      {msg.content!}
                     </ReactMarkdown>
                   </div>
                 </div>
