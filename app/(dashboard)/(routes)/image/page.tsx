@@ -145,7 +145,7 @@ const ImagePage = () => {
       </div>
       <div className='space-y-4 mt-4'>
         {isLoading && (
-          <Loader label='Generating...' />
+          <Loader label='Generating... May take a while' />
         )}
         {photos.length === 0 && !isLoading && (
           <Empty 

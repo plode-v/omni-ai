@@ -96,7 +96,7 @@ const CodePage = () => {
       </div>
       <div className='space-y-4 mt-4'>
         {isLoading && (
-          <Loader />
+          <Loader label='Generating...' />
         )}
         {messages.length === 0 && !isLoading && (
           <Empty label='Start asking now'/>
