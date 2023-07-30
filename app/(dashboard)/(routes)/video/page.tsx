@@ -73,7 +73,7 @@ const VideoPage = () => {
                     <FormControl>
                       <Input 
                         className='text-black/80 border-0 outline-none focus-visible:ring-0'
-                        placeholder='A cat in the middle of the woods'
+                        placeholder='Seahorse in a beautiful deep ocean'
                         {...field}
                       />
                     </FormControl>
