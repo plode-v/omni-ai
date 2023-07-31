@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getApiLimitCount } from "@/lib/api-limit";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         const count = await getApiLimitCount();
         res.status(200).json({ count });

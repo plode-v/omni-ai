@@ -7,13 +7,13 @@ interface EmptyProps {
 
 const EmptyComponent = ({ label }: EmptyProps ) => {
   return (
-    <div className="h-full items-center justify-center w-full flex flex-col md:mt-5">
+    <div className="items-center justify-center w-full flex flex-col md:mt-5">
         <Player 
           src={'/lottie/empty.json'}
           loop={1}
           autoplay
           speed={0.8}
-          className='md:h-[28rem] h-[20rem]'
+          className='md:h-[24rem] h-[20rem]'
         />
         <h2 className='font-[600] capitalize text-sm md:text-md mt-4 md:mt-8'>
             {label}

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import FreeCounter from './FreeCounter'
 
 interface SidebarProps {
-    apiLimitCount: Number;
+    apiLimitCount: number;
 }
 
 const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {

@@ -4,12 +4,12 @@ import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
 
 interface ApiLimitResponse {
-  count: Number;
+  count: number;
 }
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
-  const [apiLimitCount, setApiLimitCount] = useState<Number>(0);
+  const [apiLimitCount, setApiLimitCount] = useState<number>(0);
 
   useEffect(() => {
     const fetchApiLimitCount = async () => {
