@@ -1,30 +1,33 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Card } from './ui/card';
+import { Card, CardContent } from './ui/card';
+import { maxFreeCount } from '@/constants';
+import { Progress} from './ui/progress';
+import { Button } from './ui/button';
 
-interface FreeCounterProps {
-    apiLimitCount: number;
-}
 
-const FreeCounter = ({ apiLimitCount = 0 }: FreeCounterProps) => {
-
-    // const [mounted, setMounted] = useState(false)
-
-    // useEffect(() => {
-    //     setMounted(true);
-    // }, []);
-
-    // // This is for preventing hydration error.
-    // if (!mounted) {
-    //     return null;
-    // }
+const FreeCounter = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
 
   return (
-    <div className='px-3s'>
+    <div className=''>
         <Card
-            className='bg-black/10 border-0 text-white p-3'
+            className='bg-white/10 border-0 text-white p-3 flex flex-col w-full h-full'
         >
-            FreeCounter = {apiLimitCount}
+          <CardContent className='md:py-3 md:space-y-3 space-y-2 items-center flex-col flex justify-center'>
+            <div className='text-sm text-center'>
+              Free Tier {apiLimitCount} / {maxFreeCount}
+            </div>
+            <Progress 
+              className='bg-yellow-500 h-2'
+              value={(apiLimitCount / maxFreeCount) * 100}
+            />
+            <Button
+              variant='premium'
+              className='w-full mb-0'
+            >
+              Upgrade
+            </Button>
+          </CardContent>
         </Card>
     </div>
   )

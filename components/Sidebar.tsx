@@ -1,15 +1,12 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { LayoutDashboard, MessageSquare, FileImageIcon, VideoIcon, Music4Icon, Code2Icon, WrenchIcon, GalleryVerticalEndIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import FreeCounter from './FreeCounter'
 
-interface SidebarProps {
-    apiLimitCount: number;
-}
-
-const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {
+const Sidebar = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
     const routes = [
         {
             label: "Dashboard",
@@ -89,10 +86,8 @@ const Sidebar = ({ apiLimitCount = 0 }: SidebarProps) => {
                     ))}
                 </div>
             </div>
-        <div className='p-3'>
-            <FreeCounter 
-                apiLimitCount={apiLimitCount}
-            />
+        <div className='p-3 w-full'>
+            <FreeCounter apiLimitCount={apiLimitCount} />
         </div>
     </div>
   )

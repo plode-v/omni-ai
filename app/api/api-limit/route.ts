@@ -1,12 +1,16 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { getApiLimitCount } from "@/lib/api-limit";
+import { NextResponse } from "next/server";
 
-export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export const POST = async (req: Request, res: Response) => {
     try {
         const count = await getApiLimitCount();
-        res.status(200).json({ count });
+        if (!count) {
+            return new NextResponse("cannot access API limit", { status: 400 });
+        }
+
+        return NextResponse.json(count);
     } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: err });
+        console.log("[API LIMIT ERROR]",err);
+        return new NextResponse("Interal error", { status: 500 });
     }
 }

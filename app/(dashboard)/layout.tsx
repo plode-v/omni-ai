@@ -1,29 +1,15 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
+import { getApiLimitCount } from '@/lib/api-limit'
 
-interface ApiLimitResponse {
-  count: number;
-}
+const DashboardLayout = async ({ 
+  children,
+}: { 
+  children: React.ReactNode 
+}) => {
 
-const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-
-  const [apiLimitCount, setApiLimitCount] = useState<number>(0);
-
-  useEffect(() => {
-    const fetchApiLimitCount = async () => {
-      try {
-        const response = await fetch("/api/api-limit");
-        const data: ApiLimitResponse = await response.json();
-        setApiLimitCount(data.count);
-
-      } catch (err) {
-        console.error("Error fetching API limit count: ",err);
-      }
-    }
-      fetchApiLimitCount();
-  }, [])
+  const apiLimitCount = await getApiLimitCount();
 
   return (
     <div className='h-full relative md:flex'>
@@ -31,7 +17,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <Sidebar apiLimitCount={apiLimitCount} />
         </div>
         <div className='w-full flex justify-center'>
-          {/* FIXME: Fix page centering error on 3xl screens */}
           <main className='md:pl-[17.5rem] w-full 3xl:w-3/5 flex-col flex'>
             <Navbar />
             {children}
