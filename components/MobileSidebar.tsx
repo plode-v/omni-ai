@@ -8,8 +8,12 @@ import {
     SheetTrigger,
   } from "@/components/ui/sheet"
 import Sidebar from './Sidebar'
+import { getApiLimitCount } from '@/lib/api-limit'
 
-const MobileSidebar = () => {
+const MobileSidebar = async () => {
+
+  const apiLimitCount = await getApiLimitCount();
+
   return (
     <Sheet>
         <SheetTrigger asChild className='bg-white'>
@@ -18,7 +22,7 @@ const MobileSidebar = () => {
             </Button>
         </SheetTrigger>
         <SheetContent side='left' className='bg-[#1d1d3b]'>
-            <Sidebar />
+            <Sidebar apiLimitCount={apiLimitCount} />
         </SheetContent>
     </Sheet>
   )
