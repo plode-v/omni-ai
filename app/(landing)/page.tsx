@@ -64,12 +64,13 @@ const LandingPage = () => {
                     <div className='flex w-full'>
                         <div className='w-[1000px] flex flex-col justify-evenly'>
                             <div>
-                                <h2 className='text-neutral-950 sm:text-[5rem] pl-10 items-center flex font-bold'>Let Omni help you with
+                                <h2 className='text-neutral-950 sm:text-[5rem] pl-10 items-center flex font-bold'>Let Omni help you
                                 </h2>
                                 <h2 
                                     className='text-neutral-950 sm:text-[5rem] pl-10 items-center flex font-bold'
                                     id='smart-text'
                                 >
+                                    with
                                     <Typewriter 
                                         onInit={(typewriter) => {
                                             typewriter
