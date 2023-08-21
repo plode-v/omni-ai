@@ -22,7 +22,7 @@ const Underconstruction = () => {
                 Upgrade
             </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className='bg-gray-50'>
+        <AlertDialogContent className='bg-gray-50 w-4/5 sm:w-full rounded-lg'>
             <AlertDialogHeader>
                 <AlertDialogTitle className='text-slate-800 font-bold text-2xl'>Under Contruction</AlertDialogTitle>
                     <p className='text-md mt-5 text-black'>This feature is still under the development</p>
@@ -31,7 +31,7 @@ const Underconstruction = () => {
                         src={"/lottie/underconstruction.json"}
                         autoplay
                         loop
-                        className='h-[300px]'
+                        className='sm:h-[300px] h-[180px]'
                     />
                 </AlertDialogDescription>
             </AlertDialogHeader>
