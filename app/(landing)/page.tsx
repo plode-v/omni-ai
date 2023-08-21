@@ -19,7 +19,7 @@ const LandingPage = () => {
   return (
     <div className='flex justify-center bg-neutral-50 h-full'>
         <div className=' w-full 2xl:w-[1500px] md:w-4/5'>
-            <nav className='h-[70px] sm:p-3 p-2 bg-teal-500 flex justify-between items-center rounded-lg my-3'>
+            <nav className='h-[70px] sm:p-3 p-2 bg-violet-600 flex justify-between items-center rounded-lg my-3'>
                 <div className='text-white'>
                     <Image 
                         src="/images/logo black.png"
@@ -30,12 +30,12 @@ const LandingPage = () => {
                 </div>
                 <div className='flex sm:gap-3'>
                     <Link href="/sign-in">
-                        <Button className='scale-[0.85] sm:scale-100' variant="secondary">
+                        <Button className='scale-[0.85] sm:scale-100' variant="outline">
                             Sign In
                         </Button>
                     </Link>
                     <Link href="/sign-up">
-                        <Button className='scale-[0.85] sm:scale-100' variant="secondary">
+                        <Button className='scale-[0.85] sm:scale-100' variant="outline">
                             Register
                         </Button>
                     </Link>
@@ -45,24 +45,24 @@ const LandingPage = () => {
             <section id='hero-banner'>
                 <div className='sm:h-[550px] h-[500px] flex w-full'>
                     <div className='flex w-full'>
-                        <div className='flex w-[1000px]'>
+                        <div className='w-[1000px] flex flex-col justify-evenly'>
                             <h2 className='text-neutral-950 sm:text-[5rem] pl-10 items-center flex font-bold'>Let Omni help you with ...</h2>
+                            <Button className='ml-10 text-white font-bold bg-violet-500 h-[50px] w-[150px] hover:bg-violet-700'>Get started</Button>
                         </div>
-                        <div className='flex w-[500px] items-center justify-center pt-10'>
+                        <div className='flex w-[500px] items-center justify-center'>
                             <Player 
-                                src="lottie/hero-banner-2.json"
+                                src="lottie/hero-banner-4.json"
                                 autoplay
                                 loop
-                                className='h-[500px]'
+                                className='h-[450px]'
                             />
                         </div>
                     </div>
                 </div>
-                <Button className='ml-10 text-white font-bold bg-teal-600 h-[50px] w-[150px]'>Get started</Button>
             </section>
         </div>
     </div>
-  )
+)
 }
 
 export default LandingPage
