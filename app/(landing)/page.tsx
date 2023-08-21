@@ -47,7 +47,9 @@ const LandingPage = () => {
                     <div className='flex w-full'>
                         <div className='w-[1000px] flex flex-col justify-evenly'>
                             <h2 className='text-neutral-950 sm:text-[5rem] pl-10 items-center flex font-bold'>Let Omni help you with ...</h2>
-                            <Button className='ml-10 text-white font-bold bg-violet-500 h-[50px] w-[150px] hover:bg-violet-700'>Get started</Button>
+                            <Link href="/sign-up">
+                                <Button className='ml-10 text-white font-bold bg-violet-500 h-[50px] w-[150px] hover:bg-violet-700'>Get started</Button>
+                            </Link>
                         </div>
                         <div className='flex w-[500px] items-center justify-center'>
                             <Player 
