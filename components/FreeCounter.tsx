@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardContent } from './ui/card';
 import { maxFreeCount } from '@/constants';
 import { Progress} from './ui/progress';
-import { Button } from './ui/button';
+import Underconstruction from './Underconstruction';
 
 
 const FreeCounter = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
@@ -21,12 +21,7 @@ const FreeCounter = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
               className='bg-yellow-500 h-2'
               value={(apiLimitCount / maxFreeCount) * 100}
             />
-            <Button
-              variant='premium'
-              className='w-full mb-0'
-            >
-              Upgrade
-            </Button>
+            <Underconstruction />
           </CardContent>
         </Card>
     </div>
