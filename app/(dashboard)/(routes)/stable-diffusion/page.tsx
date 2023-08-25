@@ -18,9 +18,6 @@ import { Slider } from '@/components/ui/slider'
 
 
 const VideoPage = () => {
-
-  // TODO: Add more configurations on stable diffusion
-
   const router = useRouter();
   const [video, setVideo] = useState();
 

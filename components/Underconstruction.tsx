@@ -1,7 +1,6 @@
 import React from 'react'
 import {
     AlertDialog,
-    AlertDialogAction,
     AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
@@ -10,9 +9,8 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
-  import { Button } from './ui/button'
-  import { Player } from "@lottiefiles/react-lottie-player"
-  
+import { Button } from './ui/button'
+import { Player } from "@lottiefiles/react-lottie-player"
 
 const Underconstruction = () => {
   return (

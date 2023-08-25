@@ -27,12 +27,6 @@ const Sidebar = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
             color: "text-green-500"
         },
         {
-            label: "Video Generation",
-            icon: VideoIcon,
-            href: "/video",
-            color: "text-pink-500"
-        },
-        {
             label: "Stable Diffusion",
             icon: GalleryVerticalEndIcon,
             href: "stable-diffusion",
