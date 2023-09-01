@@ -17,7 +17,7 @@ const DashboardLayout = async ({
         <Sidebar apiLimitCount={apiLimitCount} />
         </div>
         <div className='w-full flex justify-center'>
-          <main className='md:pl-[17.5rem] w-full 3xl:w-3/5 flex-col flex bg-white'>
+          <main className='md:pl-[17.5rem] w-full 3xl:w-3/5 flex-col flex'>
             <Navbar />
             {children}
           </main>

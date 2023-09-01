@@ -4,10 +4,11 @@ import React from 'react'
 import Heading from '@/components/Heading'
 import { WrenchIcon } from 'lucide-react'
 import Underconstruction from '@/components/Underconstruction'
+import { UserProfile } from '@clerk/nextjs'
 
 const Settings = () => {
   return (
-    <div>
+    <div className='overflow-hidden'>
       <Heading 
         title='Settings'
         desc=""
@@ -22,6 +23,9 @@ const Settings = () => {
         <div className='w-[100px] mt-5 text-white'>
           <Underconstruction />
         </div>
+      </div>
+      <div className=' h-2/3 flex ml-8 mt-10'>
+        <UserProfile />
       </div>
     </div>
   )
