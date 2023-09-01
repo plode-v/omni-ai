@@ -1,9 +1,10 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Card, CardContent } from './ui/card';
 import { maxFreeCount } from '@/constants';
 import { Progress} from './ui/progress';
-import Underconstruction from './Underconstruction';
+// import Underconstruction from './Underconstruction';
+import ProModal from "./ProModal"
 
 
 const FreeCounter = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
@@ -21,7 +22,7 @@ const FreeCounter = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
               className='bg-yellow-500 h-2'
               value={(apiLimitCount / maxFreeCount) * 100}
             />
-            <Underconstruction />
+            <ProModal />
           </CardContent>
         </Card>
     </div>
